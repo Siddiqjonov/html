@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To-Do Manager</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="theme-toggle">
+        <button onclick="toggleTheme()">Toggle Day/Night</button>
+    </div>
+    <div class="main-container">
+        <!-- Add Section (Left) -->
+        <div class="left-panel">
+            <h2>Add a New Task</h2>
+            <div class="form-group">
+                <label for="title">Title:</label>
+                <input type="text" id="title" placeholder="Enter title" required>
+            </div>
+            <div class="form-group">
+                <label for="description">Description:</label>
+                <textarea id="description" placeholder="Enter description" required></textarea>
+            </div>
+            <div class="form-group">
+                <label for="dueDate">Due Date:</label>
+                <input type="datetime-local" id="dueDate" required>
+            </div>
+            <div class="button-group">
+                <button onclick="addToDoItem()">Add Task</button>
+                <button onclick="clearAddForm()" class="clear-btn">Clear</button>
+            </div>
+            <p id="responseMessage"></p>
+        </div>
+
+        <!-- Task List Section (Middle) -->
+        <div class="middle-panel">
+            <h2>Task List</h2>
+            <div class="filter-sort">
+                <div class="search-bar">
+                    <label for="search">Search by Title:</label>
+                    <input type="text" id="search" placeholder="Search tasks..." onkeyup="filterTasks()">
+                </div>
+                <div class="sort-bar">
+                    <label for="sort">Sort by:</label>
+                    <select id="sort" onchange="sortTasks()">
+                        <option value="id">ID</option>
+                        <option value="dueDate">Due Date</option>
+                        <option value="createdAt">Created At</option>
+                    </select>
+                </div>
+                <div class="status-filter">
+                    <label for="statusFilter">Filter by Status:</label>
+                    <select id="statusFilter" onchange="filterTasks()">
+                        <option value="all">All</option>
+                        <option value="completed">Completed</option>
+                        <option value="notCompleted">Not Completed</option>
+                    </select>
+                </div>
+            </div>
+            <div class="pagination">
+                <label for="take">Items per page:</label>
+                <input type="number" id="take" value="5" min="1">
+                <button onclick="fetchTasks()">Refresh</button>
+                <div class="pagination-controls">
+                    <button onclick="previousPage()" id="prevBtn">Previous</button>
+                    <span id="pageInfo"></span>
+                    <button onclick="nextPage()" id="nextBtn">Next</button>
+                </div>
+            </div>
+            <div id="taskList" class="task-list"></div>
+        </div>
+
+        <!-- Update Section (Right) -->
+        <div class="right-panel">
+            <h2>Update Task</h2>
+            <div class="form-group">
+                <label for="updateId">ID:</label>
+                <input type="text" id="updateId" readonly>
+            </div>
+            <div class="form-group">
+                <label for="updateTitle">Title:</label>
+                <input type="text" id="updateTitle" placeholder="Enter title" required>
+            </div>
+            <div class="form-group">
+                <label for="updateDescription">Description:</label>
+                <textarea id="updateDescription" placeholder="Enter description" required></textarea>
+            </div>
+            <div class="form-group checkbox-group">
+                <label for="updateIsCompleted">Completed:</label>
+                <input type="checkbox" id="updateIsCompleted">
+            </div>
+            <div class="form-group">
+                <label for="updateDueDate">Due Date:</label>
+                <input type="datetime-local" id="updateDueDate" required>
+            </div>
+            <div class="button-group">
+                <button onclick="updateTask()">Update Task</button>
+                <button onclick="clearUpdateForm()" class="clear-btn">Clear</button>
+            </div>
+            <p id="updateResponseMessage"></p>
+        </div>
+    </div>
+    <div id="toast" class="toast"></div>
+    <div id="loadingSpinner" class="spinner" style="display: none;">
+        <div class="spinner-icon"></div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
