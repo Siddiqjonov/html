@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up - Library</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/modern-normalize/2.0.0/modern-normalize.min.css">
+    <style>
+        body { font-family: 'Segoe UI', sans-serif; background: #f4f6fb; }
+        .container { max-width: 400px; margin: 60px auto; background: #fff; border-radius: 10px; box-shadow: 0 2px 8px #0001; padding: 2rem; }
+        h2 { text-align: center; color: #2d3a4b; }
+        form { display: flex; flex-direction: column; gap: 1rem; }
+        input { padding: 0.75rem; border: 1px solid #ccc; border-radius: 4px; }
+        button { padding: 0.75rem; background: #4a90e2; color: #fff; border: none; border-radius: 4px; cursor: pointer; }
+        button:hover { background: #357ab8; }
+        .link { text-align: center; margin-top: 1rem; }
+        .link a { color: #4a90e2; text-decoration: none; }
+        .link a:hover { text-decoration: underline; }
+        .error { color: #d32f2f; text-align: center; }
+        .success { color: #388e3c; text-align: center; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Sign Up</h2>
+        <form id="signUpForm">
+            <input type="text" id="signUpFullName" placeholder="Full Name" required />
+            <input type="email" id="signUpEmail" placeholder="Email" required />
+            <input type="text" id="signUpUsername" placeholder="Username" required />
+            <input type="password" id="signUpPassword" placeholder="Password" required />
+            <input type="password" id="signUpPasswordConfirm" placeholder="Confirm Password" required />
+            <button type="submit">Sign Up</button>
+        </form>
+        <div class="error" id="signUpError"></div>
+        <div class="success" id="signUpSuccess"></div>
+        <div class="link">
+            <span>Already have an account? <a href="signIn.html">Sign In</a></span>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
